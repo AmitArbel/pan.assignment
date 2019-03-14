@@ -28,6 +28,6 @@ import { DevicesService } from './services/devices.service';
     EventLogsService,
     DevicesService
   ],
-  bootstrap: [AppComponent, DeviceViewComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

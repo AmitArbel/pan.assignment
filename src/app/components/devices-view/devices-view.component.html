@@ -1,3 +1,4 @@
+<!--
 <div *ngFor="let device of allDevices | async">
   <div class="card">
     <div class="card-body">
@@ -17,6 +18,10 @@
       <p class="card-text">No events logged for this device</p>
     </div>
   </div>
-
-
+</div>
+-->
+<div class="card-deck">
+  <app-device-view *ngFor="let device of allDevices | async"
+                   [device]="device">
+  </app-device-view>
 </div>

@@ -160,8 +160,8 @@ export class DevicesService {
   private generateIP(): string {
     const ip = [];
     for (let i = 0; i < 4; i++) {
-      ip.push(127 * Math.random());
+      ip.push(Math.floor(127 * Math.random()));
     }
-    return ip.join(".");
+    return ip.join('.');
   }
 }

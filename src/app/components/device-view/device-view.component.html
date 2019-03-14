@@ -1,0 +1,37 @@
+<div class="card device-container">
+  <div class="card-body device-details">
+    <h5 class="card-title">{{device.name}}</h5>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          {{device.type}}
+        </div>
+        <div class="col device-status">
+          {{device.status}}
+        </div>
+      </div>
+    </div>
+    <p class="card-text device-ip">
+      <span class="device-ip-header">ip:</span>
+      <span>{{device.ipAddress}}</span>
+    </p>
+  </div>
+  <ul class="list-group list-group-flush device-events">
+    <li class="list-group-item device-events-header">Last Events:</li>
+    <li class="list-group-item" *ngFor="let event of device.events">
+      <div class="container">
+        <div class="row">
+          <div class="col-2 device-events-info">
+            {{event.type}}
+          </div>
+          <div class="col-8 device-events-info">
+            {{event.description}}
+          </div>
+          <div class="col-2 device-events-info">
+            {{event.severity}}
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

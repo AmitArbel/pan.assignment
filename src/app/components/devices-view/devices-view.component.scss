@@ -1,28 +1,32 @@
-.card {
-    border-width: 3px;
-    margin: 4px;
-
-    .list-group-item {
-        cursor: default;
-        
-        &.severity-high {
-            color: #471313;
-            background-color: #ac6363;
-        }
-
-        div {
-            display: inline;
-        }
-        .event-indication {
-            font-weight: 900;
-            font-size: 24px;
-            margin-right: 8px;
-
-            visibility: hidden;
-
-            &.is-security {
-                visibility: unset;
-            }
-        }
-    }
+.card-deck {
+  margin: 16px 0;
 }
+
+//.card {
+//    border-width: 3px;
+//    margin: 4px;
+//
+//    .list-group-item {
+//        cursor: default;
+//
+//        &.severity-high {
+//            color: #471313;
+//            background-color: #ac6363;
+//        }
+//
+//        div {
+//            display: inline;
+//        }
+//        .event-indication {
+//            font-weight: 900;
+//            font-size: 24px;
+//            margin-right: 8px;
+//
+//            visibility: hidden;
+//
+//            &.is-security {
+//                visibility: unset;
+//            }
+//        }
+//    }
+//}

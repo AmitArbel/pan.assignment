@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import {Component, Input, OnInit} from '@angular/core';
+import {IDevice} from '../../services/devices.service';
 
 @Component({
   selector: 'app-device-view',
@@ -8,7 +8,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class DeviceViewComponent implements OnInit {
 
-  constructor(public activeModal: NgbActiveModal) { }
+  @Input() device: IDevice;
+
+  constructor() { }
 
   ngOnInit() {
   }
