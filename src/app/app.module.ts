@@ -10,6 +10,8 @@ import { DevicesViewComponent } from './components/devices-view/devices-view.com
 import { DeviceViewComponent } from './components/device-view/device-view.component';
 import { EventLogsService } from './services/event-logs.service';
 import { DevicesService } from './services/devices.service';
+import { DeviceInputComponent } from './components/device-input/device-input.component';
+import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -17,17 +19,20 @@ import { DevicesService } from './services/devices.service';
     MainComponent,
     TopBarComponent,
     DevicesViewComponent,
-    DeviceViewComponent
+    DeviceViewComponent,
+    DeviceInputComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    ReactiveFormsModule
   ],
   providers: [
+    FormBuilder,
     EventLogsService,
     DevicesService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, DeviceInputComponent]
 })
 export class AppModule { }

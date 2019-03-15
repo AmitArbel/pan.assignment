@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DevicesService } from 'src/app/services/devices.service';
 import { DeviceViewComponent } from '../device-view/device-view.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {DeviceInputComponent} from "../device-input/device-input.component";
 
 @Component({
   selector: 'app-top-bar',
@@ -20,15 +21,13 @@ export class TopBarComponent implements OnInit {
 
 
   onAddDeviceClick() {
-    /*
-    debugger;
-
-    const modalRef = this.modalService.open(DeviceViewComponent);
-    modalRef.componentInstance.name = 'World';
-
-    */
-
-    this.devicesSvc.addDevice();
-
+    this.modalService.open(DeviceInputComponent).result.then((result) => {
+      console.log(result);
+      this.devicesSvc.addDevice();
+//      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      console.log(reason);
+//      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 }

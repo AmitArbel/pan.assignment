@@ -1,0 +1,46 @@
+<div class="device-input-container">
+  <div class="device-input-header">
+    Register device
+  </div>
+
+  <div class="device-input-form">
+    <form [formGroup]="regForm">
+      <div class="form-group">
+        <label for="deviceName">Device Name</label>
+        <input type="text" id="deviceName" formControlName="deviceName"
+               class="form-control"
+               [ngClass]="{'is-invalid': deviceName.errors && (deviceName.dirty || deviceName.touched)}"
+               placeholder="Name the device here">
+        <div class="invalid-feedback">
+          <span *ngIf="deviceName.errors && deviceName.errors.required">Device name is required</span>
+        </div>
+      <div class="form-group">
+      </div>
+        <label for="deviceIp">IP</label>
+        <input type="text" id="deviceIp" formControlName="deviceIp"
+               class="form-control"
+               [ngClass]="{'is-invalid': deviceIp.errors && (deviceIp.dirty || deviceIp.touched)}"
+               placeholder="Enter the device IP">
+        <div class="invalid-feedback">
+          <span *ngIf="deviceIp.errors && deviceIp.errors.required">Device IP is required</span>
+          <span *ngIf="deviceIp.errors && !deviceIp.errors.required && deviceIp.errors.ipValidator">Invalid IP pattern</span>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="device-input-footer">
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col"></div>
+        <div class="col-md-auto">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="activeModal.dismiss()">Cancel</button>
+        </div>
+        <div class="col-md-auto">
+          <button type="button" class="btn btn-primary" (click)="registerDevice()" [disabled]="this.regForm.invalid">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
