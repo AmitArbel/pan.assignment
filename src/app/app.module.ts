@@ -8,7 +8,6 @@ import { MainComponent } from './components/main/main.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { DevicesViewComponent } from './components/devices-view/devices-view.component';
 import { DeviceViewComponent } from './components/device-view/device-view.component';
-import { EventLogsService } from './services/event-logs.service';
 import { DevicesService } from './services/devices.service';
 import { DeviceInputComponent } from './components/device-input/device-input.component';
 import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
@@ -30,7 +29,6 @@ import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
   ],
   providers: [
     FormBuilder,
-    EventLogsService,
     DevicesService,
   ],
   bootstrap: [AppComponent],

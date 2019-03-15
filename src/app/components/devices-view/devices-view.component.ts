@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { EventLogsService, IEventLogEntry, EventLogEntrySeverities, EventLogEntryTypes } from 'src/app/services/event-logs.service';
-import { DevicesService, GetDevicesResponse } from 'src/app/services/devices.service';
+import { DevicesService } from 'src/app/services/devices.service';
 import { Observable } from 'rxjs';
+import {GetDevicesResponse} from '../../common/interfaces';
+import {EventLogEntrySeverities, EventLogEntryTypes} from '../../common/consts';
 
 @Component({
   selector: 'app-devices-view',
@@ -12,15 +13,11 @@ import { Observable } from 'rxjs';
 export class DevicesViewComponent implements OnInit {
 
   allDevices: Observable<GetDevicesResponse>;
-  allEvents: Observable<IEventLogEntry[]>;
 
   eventSeverities = EventLogEntrySeverities;
   eventTypes = EventLogEntryTypes;
 
-  constructor(
-    private eventsSvc: EventLogsService,
-    private devicesSvc: DevicesService
-  ) {
+  constructor(private devicesSvc: DevicesService) {
     this.allDevices = this.devicesSvc.getDevices();
   }
 
