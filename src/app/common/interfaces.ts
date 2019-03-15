@@ -1,15 +1,23 @@
 export type DeviceType = 'workstation' | 'server' | 'mobile';
 export type DeviceStatus = 'active' | 'inactive';
 
-export interface IDevice {
+export interface IBaseDevice {
   name: string;
+}
+
+export interface ITempDevice extends IBaseDevice {
+  isTemp: boolean;
+  tempId: number;
+}
+
+export interface IDevice extends IBaseDevice {
   ipAddress: string;
   type: DeviceType;
   status: DeviceStatus;
   events?: IEventLogEntry[];
 }
 
-export type GetDevicesResponse = IDevice[];
+export type GetDevicesResponse = IBaseDevice[];
 export type AddDeviceResponse = IDevice;
 
 export interface INewDeviceParams {
