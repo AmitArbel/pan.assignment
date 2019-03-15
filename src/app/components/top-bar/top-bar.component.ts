@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DevicesService } from 'src/app/services/devices.service';
-import { DeviceViewComponent } from '../device-view/device-view.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {DeviceInputComponent} from "../device-input/device-input.component";
-import {INewDeviceParams} from "../../common/interfaces";
+import {DeviceInputComponent} from '../device-input/device-input.component';
+import {INewDeviceParams} from '../../common/interfaces';
 
 @Component({
   selector: 'app-top-bar',
