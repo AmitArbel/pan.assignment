@@ -1,5 +1,5 @@
-export type DeviceType = "workstation" | "server" | "mobile";
-export type DeviceStatus = "active" | "inactive";
+export type DeviceType = 'workstation' | 'server' | 'mobile';
+export type DeviceStatus = 'active' | 'inactive';
 
 export interface IDevice {
   name: string;
@@ -17,8 +17,8 @@ export interface INewDeviceParams {
   ip: string;
 }
 
-export type EventLogEntryType = "security" | "log";
-export type EventLogEntrySeverity = "high" | "medium" | "low";
+export type EventLogEntryType = 'security' | 'log';
+export type EventLogEntrySeverity = 'high' | 'medium' | 'low';
 
 export interface IEventLogEntry {
   type: EventLogEntryType;

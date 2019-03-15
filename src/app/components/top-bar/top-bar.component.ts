@@ -3,6 +3,7 @@ import { DevicesService } from 'src/app/services/devices.service';
 import { DeviceViewComponent } from '../device-view/device-view.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {DeviceInputComponent} from "../device-input/device-input.component";
+import {INewDeviceParams} from "../../common/interfaces";
 
 @Component({
   selector: 'app-top-bar',
@@ -21,13 +22,8 @@ export class TopBarComponent implements OnInit {
 
 
   onAddDeviceClick() {
-    this.modalService.open(DeviceInputComponent).result.then((result) => {
-      console.log(result);
-      this.devicesSvc.addDevice();
-//      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      console.log(reason);
-//      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+    this.modalService.open(DeviceInputComponent).result.then((result: INewDeviceParams) => {
+      this.devicesSvc.addDevice(result).subscribe();
+    }, (reason) => {});
   }
 }

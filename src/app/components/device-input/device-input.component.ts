@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
 import {PanValidators} from "../../common/helpers/validators";
+import {INewDeviceParams} from "../../common/interfaces";
 
 @Component({
   selector: 'app-device-input',
@@ -32,7 +33,11 @@ export class DeviceInputComponent implements OnInit {
       return;
     }
     console.log(this.regForm.value);
-    this.activeModal.close(this.regForm.value);
+    const returnValue: INewDeviceParams = {
+      name: this.regForm.value.deviceName,
+      ip: this.regForm.value.deviceIp,
+    };
+    this.activeModal.close(returnValue);
 
   }
 }

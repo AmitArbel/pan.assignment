@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IDevice} from '../../services/devices.service';
+import {IDevice} from '../../common/interfaces';
 
 @Component({
   selector: 'app-device-view',

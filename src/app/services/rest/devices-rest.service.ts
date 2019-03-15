@@ -83,7 +83,7 @@ export class DevicesRestService {
   }
 
   private generateDevice(params?: INewDeviceParams): IDevice {
-    params = params || {};
+    params = params || {} as INewDeviceParams;
 
     const deviceType = this.getRandomValue(DeviceTypes);
 
