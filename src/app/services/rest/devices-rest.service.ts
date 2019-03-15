@@ -5,6 +5,7 @@ import {
   INewDeviceParams
 } from '../../common/interfaces';
 import {DeviceStatuses, DeviceTypes, EventLogEntrySeverities, EventLogEntryTypes} from '../../common/consts';
+import {HttpClient} from "@angular/common/http";
 
 const DeviceBrandsByType = {
   [DeviceTypes.mobile]: {
@@ -43,25 +44,28 @@ const descriptions = [
 })
 export class DevicesRestService {
 
-  private devices: IDevice[] = this.devicesGenerator();
+  private devices: Observable<GetDevicesResponse>;
+  private baseURL: string;
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) {
+    const protocol = window.location.protocol;
+    const host = window.location.hostname;
+    const port = 3000;
+    this.baseURL = `${protocol}//${host}:${port}`;
+  }
 
   public getDevices(): Observable<GetDevicesResponse> {
-    const devicesObservable = new Observable<GetDevicesResponse>(observer => {
-      setTimeout(() => {
-        observer.next(this.devices);
-      }, 1000);
-    });
-
-    return devicesObservable;
+    if (!this.devices) {
+      const url = '/devices';
+      this.devices = this.httpClient.get<GetDevicesResponse>(this.buildFullURL(url));
+    }
+    return this.devices;
   }
 
   public addDevice(params: INewDeviceParams): Observable<AddDeviceResponse> {
     const newDeviceObservable = new Observable<AddDeviceResponse>(observer => {
       setTimeout(() => {
         const newDevice = this.generateDevice(params);
-        this.devices.unshift(newDevice);
 
         observer.next(newDevice);
         observer.complete();
@@ -72,14 +76,8 @@ export class DevicesRestService {
     return newDeviceObservable;
   }
 
-  private devicesGenerator(count: number = 10): IDevice[] {
-    const devices = [];
-
-    for (let i = 0; i < count; i++) {
-      devices.push(this.generateDevice());
-    }
-
-    return devices;
+  private buildFullURL(url) {
+    return `${this.baseURL}${url}`;
   }
 
   private generateDevice(params?: INewDeviceParams): IDevice {

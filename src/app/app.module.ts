@@ -10,7 +10,8 @@ import { DevicesViewComponent } from './components/devices-view/devices-view.com
 import { DeviceViewComponent } from './components/device-view/device-view.component';
 import { DevicesService } from './services/devices.service';
 import { DeviceInputComponent } from './components/device-input/device-input.component';
-import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [
     FormBuilder,
