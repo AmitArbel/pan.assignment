@@ -1,6 +1,11 @@
 # DevicesApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
+##### This is a frontend	application	the	manages	a	list	of devices: desktops,	laptops	and	mobile	phones.
+
+##### Devices Cards:
+Device has:	name, IP address,	type (workstation,	server,	mobile),	status (active,	inactive) and	randomly generated 5 events:	event	type	(security,	log),	severity (high,	medium,	low)	and	description	– random text	like	lorem	ipsum. The device list	should	be	displayed	using	a	responsive	card design,	where	the	device	details	are	on	the	top	of the card while	the	device	events	in	the	footer	of	the	card.
+
+User can	add	a	device using	a	button	which	will	display	a	form	that	contains	fields	for:	name,	IP. Once	saved, the device	will	be	added	to	the	card	list	with	random	generated	type,	status	and	events.
 
 ## Development server
 
