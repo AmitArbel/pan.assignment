@@ -19,10 +19,16 @@ export class TopBarComponent implements OnInit {
   ngOnInit() {
   }
 
-
   onAddDeviceClick() {
-    this.modalService.open(DeviceInputComponent).result.then((result: INewDeviceParams) => {
-      this.devicesSvc.addDevice(result).subscribe();
-    }, (reason) => {});
+    this.modalService.open(DeviceInputComponent).result
+      .then(this.applyAddingNewDevice.bind(this));
+  }
+
+  private applyAddingNewDevice(result: INewDeviceParams) {
+    let newDeviceObservableSubscription;
+    const newDeviceObserver = {
+      complete: () => newDeviceObservableSubscription && newDeviceObservableSubscription.unsubscribe(),
+    };
+    newDeviceObservableSubscription = this.devicesSvc.addDevice(result).subscribe(newDeviceObserver);
   }
 }

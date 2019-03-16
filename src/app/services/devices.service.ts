@@ -57,6 +57,7 @@ export class DevicesService {
           this.replaceTempStub(newDeviceId, response);
 
           observer.next(response);
+          observer.complete();
         },
         observer.error,
         observer.complete);
