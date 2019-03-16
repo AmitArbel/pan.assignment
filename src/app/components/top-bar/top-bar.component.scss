@@ -1,0 +1,14 @@
+@import "../../common/style";
+
+.app-top-bar-container {
+  background-image: $top-bar-background-image;
+  color: #fff;
+
+  .add-device-button {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,4 +1,9 @@
+@import "../../common/style";
+
 .device-input-header {
+  background-image: $top-bar-background-image;
+  color: #fff;
+
   padding: 16px;
 
   font-size: 18px;
