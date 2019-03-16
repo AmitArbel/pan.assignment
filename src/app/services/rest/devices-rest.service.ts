@@ -27,7 +27,7 @@ export class DevicesRestService {
   }
 
   public addDevice(params: INewDeviceParams): Observable<AddDeviceResponse> {
-    const url = '/device';
+    const url = '/devices';
     return this.httpClient.post<AddDeviceResponse>(this.buildFullURL(url), params);
   }
 
