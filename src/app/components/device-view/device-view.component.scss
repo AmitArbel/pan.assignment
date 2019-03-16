@@ -26,8 +26,32 @@
     color: #b53535;
   }
 
+  &.is-active {
+    .device-status {
+      color: #12b152;
+    }
+  }
+
+  &.is-non-active {
+    &:not(:hover) {
+      opacity: 0.6;
+    }
+    .device-status {
+      color: #b53535;
+    }
+  }
+
   .device-details {
     font-size: 16px;
+    background-color: #d8eef3;
+
+    .device-name {
+      color: #007fa2;
+    }
+
+    .device-type, .device-status {
+      font-weight: 600;
+    }
 
     .device-status {
       text-align: right;
@@ -47,12 +71,24 @@
     font-size: 14px;
 
     .device-events-header {
-      background-color: #eeeeee;
+      background-color: #f3f3f3;
       font-weight: 600;
     }
 
     .device-events-info {
       padding-left: 0px;
+    }
+
+    .is-security {
+      font-weight: 600;
+
+      &.is-high {
+        color: #b53535;
+      }
+
+      &.is-medium {
+        color: #c5b62f;
+      }
     }
   }
 }

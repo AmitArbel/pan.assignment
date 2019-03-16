@@ -1,10 +1,12 @@
 <div class="card device-container"
-     [ngClass]="{'failed-to-store': device.failedToStore}">
+     [class.failed-to-store]="device.failedToStore"
+     [ngClass]="device.status === deviceStatuses.active && 'is-active' ||
+                device.status === deviceStatuses.inactive && 'is-non-active'">
   <div class="card-body device-details">
-    <h5 class="card-title">{{device.name}}</h5>
+    <h5 class="card-title device-name">{{device.name}}</h5>
     <div class="container">
       <div class="row">
-        <div class="col">
+        <div class="col device-type">
           {{device.type}}
         </div>
         <div class="col device-status">
@@ -20,7 +22,11 @@
   <ul class="list-group list-group-flush device-events"
       *ngIf="!device.isTemp">
     <li class="list-group-item device-events-header">Last Events:</li>
-    <li class="list-group-item" *ngFor="let event of device.events">
+    <li *ngFor="let event of device.events"
+        class="list-group-item"
+        [ngClass]="{'is-security': event.type === eventTypes.security,
+                    'is-high': event.severity === eventSeverities.high,
+                    'is-medium': event.severity === eventSeverities.medium}">
       <div class="container">
         <div class="row">
           <div class="col-2 device-events-info">
