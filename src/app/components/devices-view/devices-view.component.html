@@ -1,27 +1,5 @@
-<!--
-<div *ngFor="let device of allDevices | async">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">{{device.name}}</h5>
-      <p class="card-text">{{device.ip}}</p>
-      <p class="card-text">{{device.type}}</p>
-    </div>
-    <ul class="list-group list-group-flush" *ngIf="device.events">
-      <li class="list-group-item" *ngFor="let event of device.events"
-        [ngClass]="{'severity-high': event.severity === eventSeverities.high}">
-        <div class="event-indication" [ngClass]="{'is-security': event.type === eventTypes.security}"
-          title="this is a security issue!!">!</div>
-        <div>{{event.description}}</div>
-      </li>
-    </ul>
-    <div class="card-body" *ngIf="!device.events">
-      <p class="card-text">No events logged for this device</p>
-    </div>
-  </div>
-</div>
--->
 <div class="card-deck">
-  <app-device-view *ngFor="let device of allDevices | async"
+  <app-device-view *ngFor="let device of allDevices"
                    [device]="device">
   </app-device-view>
 </div>

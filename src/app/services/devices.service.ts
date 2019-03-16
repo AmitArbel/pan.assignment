@@ -40,8 +40,8 @@ export class DevicesService {
           this.loadedDevices.splice(0, this.loadedDevices.length);
           this.loadedDevices.push(...response);
         },
-        observer.error,
-        observer.complete);
+        (error) => observer.error(error),
+        () => observer.complete());
       }
       observer.next(this.loadedDevices);
     });
@@ -51,16 +51,20 @@ export class DevicesService {
 
   addDevice(params: INewDeviceParams): Observable<AddDeviceResponse> {
     const devicesObservable = new Observable<AddDeviceResponse>(observer => {
-      const newDeviceId = this.pushTempDeviceStub(params);
+      const newTempDevice = this.pushTempDeviceStub(params);
 
       this.devicesRestService.addDevice(params).subscribe(response => {
-          this.replaceTempStub(newDeviceId, response);
+          this.replaceTempStub(newTempDevice.tempId, response);
 
           observer.next(response);
           observer.complete();
         },
-        observer.error,
-        observer.complete);
+        (error) => {
+          newTempDevice.failedToStore = true;
+          observer.error(error);
+        },
+        () => observer.complete()
+      );
     });
 
     return devicesObservable;
@@ -71,18 +75,17 @@ export class DevicesService {
     this.loadedDevices.splice(stubDeviceIndex, 1, response);
   }
 
-  private pushTempDeviceStub(params: INewDeviceParams) {
+  private pushTempDeviceStub(params: INewDeviceParams): ITempDevice {
     if (this.newDeviceId === Number.MAX_SAFE_INTEGER) {
       this.newDeviceId = 0;
     }
     const newDeviceId = this.newDeviceId++;
-    const newTempDevice: ITempDevice = {
-      name: params.name,
+    const newTempDevice: ITempDevice = Object.assign({}, params, {
       isTemp: true,
       tempId: newDeviceId,
-    };
+    });
 
     this.loadedDevices.unshift(newTempDevice);
-    return newDeviceId;
+    return newTempDevice;
   }
 }

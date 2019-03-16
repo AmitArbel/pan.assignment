@@ -28,14 +28,13 @@ export class DeviceInputComponent implements OnInit {
   }
 
   registerDevice() {
-    // stop here if form is invalid
     if (this.regForm.invalid) {
       return;
     }
-    console.log(this.regForm.value);
+
     const returnValue: INewDeviceParams = {
       name: this.regForm.value.deviceName,
-      ip: this.regForm.value.deviceIp,
+      ipAddress: this.regForm.value.deviceIp,
     };
     this.activeModal.close(returnValue);
 

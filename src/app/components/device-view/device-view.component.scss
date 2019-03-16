@@ -21,6 +21,11 @@
 
   margin: 15px;
 
+  &.failed-to-store {
+    border-color: #b53535;
+    color: #b53535;
+  }
+
   .device-details {
     font-size: 16px;
 

@@ -1,4 +1,5 @@
-<div class="card device-container">
+<div class="card device-container"
+     [ngClass]="{'failed-to-store': device.failedToStore}">
   <div class="card-body device-details">
     <h5 class="card-title">{{device.name}}</h5>
     <div class="container">
@@ -7,7 +8,7 @@
           {{device.type}}
         </div>
         <div class="col device-status">
-          {{device.status}}
+          {{device.status || !device.failedToStore && 'Saving...' || device.isTemp && 'Not Saved'}}
         </div>
       </div>
     </div>
@@ -16,7 +17,8 @@
       <span>{{device.ipAddress}}</span>
     </p>
   </div>
-  <ul class="list-group list-group-flush device-events">
+  <ul class="list-group list-group-flush device-events"
+      *ngIf="!device.isTemp">
     <li class="list-group-item device-events-header">Last Events:</li>
     <li class="list-group-item" *ngFor="let event of device.events">
       <div class="container">

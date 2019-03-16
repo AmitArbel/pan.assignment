@@ -3,6 +3,7 @@ import { DevicesService } from 'src/app/services/devices.service';
 import { Observable } from 'rxjs';
 import {GetDevicesResponse} from '../../common/interfaces';
 import {EventLogEntrySeverities, EventLogEntryTypes} from '../../common/consts';
+import {ToastrHelper} from "../../common/helpers/toastr-helper";
 
 @Component({
   selector: 'app-devices-view',
@@ -12,13 +13,25 @@ import {EventLogEntrySeverities, EventLogEntryTypes} from '../../common/consts';
 })
 export class DevicesViewComponent implements OnInit {
 
-  allDevices: Observable<GetDevicesResponse>;
+  allDevices: GetDevicesResponse;
 
   eventSeverities = EventLogEntrySeverities;
   eventTypes = EventLogEntryTypes;
 
   constructor(private devicesSvc: DevicesService) {
-    this.allDevices = this.devicesSvc.getDevices();
+    let newDeviceObservableSubscription;
+    const getDevicesObserver =  {
+      next: (result) => {
+        this.allDevices = result;
+        if (newDeviceObservableSubscription) {
+          newDeviceObservableSubscription.unsubscribe();
+        }
+      },
+      error: () => {
+        ToastrHelper.error(`Failed to get devices from server`);
+      }
+    };
+    newDeviceObservableSubscription = this.devicesSvc.getDevices().subscribe(getDevicesObserver);
   }
 
   ngOnInit() {

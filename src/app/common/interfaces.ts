@@ -6,8 +6,10 @@ export interface IBaseDevice {
 }
 
 export interface ITempDevice extends IBaseDevice {
+  ipAddress?: string;
   isTemp: boolean;
   tempId: number;
+  failedToStore?: boolean;
 }
 
 export interface IDevice extends IBaseDevice {
@@ -22,7 +24,7 @@ export type AddDeviceResponse = IDevice;
 
 export interface INewDeviceParams {
   name: string;
-  ip: string;
+  ipAddress: string;
 }
 
 export type EventLogEntryType = 'security' | 'log';

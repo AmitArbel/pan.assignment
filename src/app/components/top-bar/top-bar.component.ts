@@ -3,6 +3,7 @@ import { DevicesService } from 'src/app/services/devices.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {DeviceInputComponent} from '../device-input/device-input.component';
 import {INewDeviceParams} from '../../common/interfaces';
+import {ToastrHelper} from '../../common/helpers/toastr-helper';
 
 @Component({
   selector: 'app-top-bar',
@@ -25,10 +26,11 @@ export class TopBarComponent implements OnInit {
   }
 
   private applyAddingNewDevice(result: INewDeviceParams) {
-    let newDeviceObservableSubscription;
     const newDeviceObserver = {
-      complete: () => newDeviceObservableSubscription && newDeviceObservableSubscription.unsubscribe(),
+      error: () => {
+        ToastrHelper.error(`Failed to add device '${result.name}'`);
+      }
     };
-    newDeviceObservableSubscription = this.devicesSvc.addDevice(result).subscribe(newDeviceObserver);
+    this.devicesSvc.addDevice(result).subscribe(newDeviceObserver);
   }
 }
