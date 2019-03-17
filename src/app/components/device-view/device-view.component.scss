@@ -43,7 +43,31 @@
 
   .device-details {
     font-size: 16px;
+
     background-color: #d8eef3;
+
+    .device-icon-cell {
+      flex: 0 0;
+      padding: 0;
+
+      .device-icon {
+        min-height: 100%;
+        min-width: 35px;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.7;
+
+        &.workstation {
+          background-image: url('../../../assets/screen.svg');
+        }
+        &.server {
+          background-image: url('../../../assets/server.svg');
+        }
+        &.mobile {
+          background-image: url('../../../assets/mobile.svg');
+        }
+      }
+    }
 
     .device-name {
       color: #007fa2;
@@ -57,13 +81,13 @@
       text-align: right;
     }
 
-    .device-ip {
-      padding-right: 15px;
-      padding-left: 15px;
+    .device-type {
+      font-size: 18px;
+      line-height: 44px;
+    }
 
-      .device-ip-header {
-        margin-right: 4px;
-      }
+    .device-ip-header {
+      margin-right: 4px;
     }
   }
 

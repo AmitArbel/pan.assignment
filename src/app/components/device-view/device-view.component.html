@@ -6,18 +6,24 @@
     <h5 class="card-title device-name">{{device.name}}</h5>
     <div class="container">
       <div class="row">
+        <div class="col device-icon-cell">
+          <div class="device-icon"
+               [ngClass]="device.type"></div>
+        </div>
         <div class="col device-type">
           {{device.type}}
         </div>
-        <div class="col device-status">
-          {{device.status || !device.failedToStore && 'Saving...' || device.isTemp && 'Not Saved'}}
+        <div class="col">
+          <div class="row device-status justify-content-end">
+            {{device.status || !device.failedToStore && 'Saving...' || device.isTemp && 'Not Saved'}}
+          </div>
+          <div class="row justify-content-end">
+            <span class="device-ip-header">ip:</span>
+            <span>{{device.ipAddress}}</span>
+          </div>
         </div>
       </div>
     </div>
-    <p class="card-text device-ip">
-      <span class="device-ip-header">ip:</span>
-      <span>{{device.ipAddress}}</span>
-    </p>
   </div>
   <ul class="list-group list-group-flush device-events"
       *ngIf="!device.isTemp">
