@@ -1,5 +1,11 @@
 :host {
   background-color: #f9feff;
+
+  max-height: 100%;
+  max-width: 100%;
+
+  display: block;
+  overflow-y: auto;
 }
 
 .card-deck {
