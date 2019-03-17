@@ -86,8 +86,12 @@
       line-height: 44px;
     }
 
-    .device-ip-header {
-      margin-right: 4px;
+    .device-ip {
+      color: #545353;
+
+      .device-ip-header {
+        margin-right: 4px;
+      }
     }
   }
 

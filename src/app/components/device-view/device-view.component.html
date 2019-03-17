@@ -17,8 +17,8 @@
           <div class="row device-status justify-content-end">
             {{device.status || !device.failedToStore && 'Saving...' || device.isTemp && 'Not Saved'}}
           </div>
-          <div class="row justify-content-end">
-            <span class="device-ip-header">ip:</span>
+          <div class="row justify-content-end device-ip">
+            <span class="device-ip-header">IP</span>
             <span>{{device.ipAddress}}</span>
           </div>
         </div>
