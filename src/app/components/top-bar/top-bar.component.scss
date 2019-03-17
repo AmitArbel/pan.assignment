@@ -2,6 +2,7 @@
 
 .app-top-bar-container {
   background-image: $top-bar-background-image;
+  max-height: $top-bar-height;
   color: #fff;
 
   .add-device-button {
