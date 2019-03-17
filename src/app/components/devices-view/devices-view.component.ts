@@ -15,13 +15,12 @@ export class DevicesViewComponent implements OnInit {
 
   constructor(private devicesSvc: DevicesService) {
     let newDeviceObservableSubscription;
+
     const getDevicesObserver =  {
       next: (result) => {
         this.allDevices = result;
-        if (newDeviceObservableSubscription) {
-          newDeviceObservableSubscription.unsubscribe();
-        }
       },
+      // Handing the "error" case for showing message to user.
       error: () => {
         ToastrHelper.error(`Failed to get devices from server`);
       }

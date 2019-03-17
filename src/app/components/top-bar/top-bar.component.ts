@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DevicesService } from 'src/app/services/devices.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {DeviceInputComponent} from '../device-input/device-input.component';
-import {INewDeviceParams} from '../../common/interfaces';
+import {IBaseDevice} from '../../common/interfaces';
 import {ToastrHelper} from '../../common/helpers/toastr-helper';
 
 @Component({
@@ -25,7 +25,7 @@ export class TopBarComponent implements OnInit {
       .then(this.applyAddingNewDevice.bind(this));
   }
 
-  private applyAddingNewDevice(result: INewDeviceParams) {
+  private applyAddingNewDevice(result: IBaseDevice) {
     const newDeviceObserver = {
       error: () => {
         ToastrHelper.error(`Failed to add device '${result.name}'`);

@@ -10,6 +10,7 @@ import {DeviceStatuses, EventLogEntrySeverities, EventLogEntryTypes} from '../..
 export class DeviceViewComponent implements OnInit {
   @Input() device: IDevice;
 
+  // Referencing those constants for using on template.
   deviceStatuses = DeviceStatuses;
   eventSeverities = EventLogEntrySeverities;
   eventTypes = EventLogEntryTypes;

@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { DevicesViewComponent } from './components/devices-view/devices-view.component';
 
 const routes: Routes = [
-  { path: '', component: DevicesViewComponent }
+  { path: '', component: DevicesViewComponent },
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({

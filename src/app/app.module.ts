@@ -11,7 +11,7 @@ import { DeviceViewComponent } from './components/device-view/device-view.compon
 import { DevicesService } from './services/devices.service';
 import { DeviceInputComponent } from './components/device-input/device-input.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AddDeviceResponse, GetDevicesResponse, INewDeviceParams } from '../../common/interfaces';
+import {AddDeviceResponse, GetDevicesResponse, IBaseDevice} from '../../common/interfaces';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({
@@ -26,7 +26,7 @@ export class DevicesRestService {
     return this.devices;
   }
 
-  public addDevice(params: INewDeviceParams): Observable<AddDeviceResponse> {
+  public addDevice(params: IBaseDevice): Observable<AddDeviceResponse> {
     const url = '/devices';
     return this.httpClient.post<AddDeviceResponse>(this.buildFullURL(url), params);
   }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
-import {PanValidators} from "../../common/helpers/validators";
-import {INewDeviceParams} from "../../common/interfaces";
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {PanValidators} from '../../common/helpers/validators';
+import {IBaseDevice} from '../../common/interfaces';
 
 @Component({
   selector: 'app-device-input',
@@ -17,6 +17,7 @@ export class DeviceInputComponent implements OnInit {
 
   constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder) {
     this.deviceName = new FormControl('', Validators.required);
+    // The IP field will be handled with a custom validator (checking ip structure).
     this.deviceIp = new FormControl('', [Validators.required, PanValidators.ipValidator()]);
     this.regForm = this.formBuilder.group({
       deviceName: this.deviceName,
@@ -32,7 +33,7 @@ export class DeviceInputComponent implements OnInit {
       return;
     }
 
-    const returnValue: INewDeviceParams = {
+    const returnValue: IBaseDevice = {
       name: this.regForm.value.deviceName,
       ipAddress: this.regForm.value.deviceIp,
     };
